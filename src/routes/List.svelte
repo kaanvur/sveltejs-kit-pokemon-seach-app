@@ -7,7 +7,7 @@
 	});
   let addPokemonToFavorite = (pokemon) => {
     favoritePokemon.update(pokemonList => {
-      const duplicate = pokemonList.some(item => item.name === pokemon.name);
+      const duplicate = pokemonList.some(item => item.id === pokemon.id);
       if (!duplicate) {
         return [...pokemonList, pokemon];
       }
