@@ -1,10 +1,19 @@
 <script>
-  import {pokemonDataStor} from '$lib/Stories.svelte';
+  import {pokemonDataStor,favoritePokemon} from '$lib/Stories.svelte';
 	let pokemonData;
   
 	pokemonDataStor.subscribe((value) => {
 		pokemonData = value;
 	});
+  let addPokemonToFavorite = (pokemon) => {
+    favoritePokemon.update(pokemonList => {
+      const duplicate = pokemonList.some(item => item.name === pokemon.name);
+      if (!duplicate) {
+        return [...pokemonList, pokemon];
+      }
+      return pokemonList;
+    });
+  }
 </script>
 {#if pokemonData[0] == 'boş'}
   <h2>Pokemon Ara</h2>
@@ -12,7 +21,7 @@
   <h2>Pokemon Listesi</h2>
   <section class="list-holder">
     {#each pokemonData as pokemon}
-      <div>
+      <div on:click={addPokemonToFavorite(pokemon)}>
         <img src={pokemon.photo} alt={pokemon.name} />
         <p>{pokemon.name}</p>
       </div>

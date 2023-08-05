@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Pokemon Search</title>
+	<meta name="description" content="Pokemon Search app" />
 </svelte:head>
 <section>
 	<Seachbox />

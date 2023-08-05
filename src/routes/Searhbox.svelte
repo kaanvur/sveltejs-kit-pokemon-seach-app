@@ -13,7 +13,9 @@
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(async () => {
       pokemonData = await searchPokemon(searchTerm);
-      pokemonDataStor.set(pokemonData);
+      pokemonDataStor.update(() => {
+        return  pokemonData
+      });
     }, 400);
   }
 </script>
