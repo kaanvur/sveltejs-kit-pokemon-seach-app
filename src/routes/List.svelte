@@ -1,15 +1,14 @@
 <script>
   import {pokemonDataStor} from '$lib/Stories.svelte';
-	let pokemonData = 'boş';
+	let pokemonData;
   
 	pokemonDataStor.subscribe((value) => {
 		pokemonData = value;
 	});
 </script>
-{#if pokemonData == 'boş'}
+{#if pokemonData[0] == 'boş'}
   <h2>Pokemon Ara</h2>
 {:else if pokemonData.length > 0}
-{pokemonData}
   <h2>Pokemon Listesi</h2>
   <section class="list-holder">
     {#each pokemonData as pokemon}
@@ -28,6 +27,7 @@
     display: grid;
     gap: 10px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
   }
 
   .list-holder > * {
