@@ -15,10 +15,10 @@
     });
   }
 </script>
-{#if pokemonData[0] == 'boş'}
-  <h2>Pokemon Ara</h2>
+{#if pokemonData[0] == 'empty'}
+  <h2>Search Pokemon</h2>
 {:else if pokemonData.length > 0}
-  <h2>Pokemon Listesi</h2>
+  <h2>Pokémon List</h2>
   <section class="list-holder">
     {#each pokemonData as pokemon}
       <div on:click={addPokemonToFavorite(pokemon)}>
@@ -28,7 +28,7 @@
     {/each}
   </section>
 {:else}
-  <h2>Böyle bir Pokemon bulunamadı.</h2>
+  <h2>this pokemon never existed</h2>
 {/if}
 
 <style>
